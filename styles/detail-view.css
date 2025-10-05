@@ -1,0 +1,53 @@
+.detail-view {
+    background-color: lightgreen;
+    width: 100%;
+}
+
+.task-details-view,
+.project-details-view {
+    background-color: cadetblue;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    .item-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: transparent;
+        border-style: none;
+        width: 100%;
+        color: var(--text-color);
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    /* .project-notes {
+        font-size: 1rem;
+        background: transparent;
+        border: solid 1px var(--border-color);
+        padding: 0.5rem;
+        width: 100%;
+        color: var(--text-color);
+
+        &:focus {
+            outline: none;
+        }
+    } */
+}
+
+.project-details-view {
+    .project-notes {
+        font-size: 1rem;
+        background: transparent;
+        border: solid 1px var(--border-color);
+        padding: 0.5rem;
+        width: 100%;
+        color: var(--text-color);
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

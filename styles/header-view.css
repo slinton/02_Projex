@@ -1,0 +1,15 @@
+.header-view {
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    background-color: lightcoral;
+
+    .title {
+        text-align: center;
+        height: 100%;
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--foreground-color);
+        padding: 1rem;
+    }
+}

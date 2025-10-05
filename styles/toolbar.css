@@ -1,0 +1,45 @@
+.toolbar {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--highlight-color);
+    color: var(--contrast-color);
+    padding: 0.5rem;
+
+    button {
+        padding: 0.25rem;
+        border-style: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .material-icons {
+        color: var(--contrast-color);
+        vertical-align: middle;
+        font-size: 1.25rem;
+    }
+
+    .filter-dropdown {
+        position: absolute;
+        background-color: white;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        z-index: 1000;
+
+        &.show {
+            display: block;
+        }
+    }
+
+}

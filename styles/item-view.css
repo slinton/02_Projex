@@ -1,0 +1,26 @@
+.item-view {
+    font-family: var(--main-font);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 20rem;
+    max-width: 40rem;
+    background-color: white;
+    border: 1px solid var(--highlight-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+
+    h2 {
+        font-size: 1.25rem;
+        color: var(--highlight-color);
+    }
+
+    &:hover {
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.selected {
+    border: 2px solid var(--highlight-color);
+    padding: calc(0.5rem - 1px);
+}

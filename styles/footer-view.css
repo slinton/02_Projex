@@ -1,0 +1,11 @@
+.footer-view {
+    height: 5%;
+    flex: 0 0 5rem;
+    background-color: var(--background-color);
+    padding: 1rem;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
