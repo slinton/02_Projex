@@ -23,4 +23,18 @@ export class Task extends ProjectItem {
            throw new Error(`Invalid task status: ${newStatus}`);
        }
     }
+
+    toJSON() {
+        return {
+            name: this.name,
+            status: this._status,
+            notes: this.notes
+        };
+    }
+
+    fromJSON(data) {
+        this.name = data.name;
+        this._status = data.status;
+        this.notes = data.notes || "";
+    }
 }

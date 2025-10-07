@@ -2,12 +2,8 @@
 
 
 Brutally rebuild everything every time!
-Mix of html and child views feels clunky:
-Move all generation to the render, but check if re-render is needed before taking action
-Rebuild elements?
-e.g.:
-needs_render
-render
+
+Fix remove item context menu
 
 
 Add details pane to current Project in header view

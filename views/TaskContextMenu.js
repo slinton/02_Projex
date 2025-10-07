@@ -21,22 +21,26 @@ export class TaskContextMenu {
         this._element.style.top = `${event.clientY}px`;
         this._element.style.left = `${event.clientX}px`;
 
-        // Menu items
-        const editOption = document.createElement("div");
-        editOption.classList.add("context-menu-item");
-        editOption.textContent = "Edit Task";
-        editOption.onclick = () => {
-            // Your edit logic here
-            this._element.remove();
-        };
-        this._element.appendChild(editOption);
+        // Edit Task
+        // const editOption = document.createElement("div");
+        // editOption.classList.add("context-menu-item");
+        // editOption.textContent = "Edit Task";
+        // editOption.onclick = () => {
+        //     // TODO this._element.remove();
+        // };
+        // this._element.appendChild(editOption);
 
+        // Delete Task: TODO. This needs to get root project to notify views
         const deleteOption = document.createElement("div");
         deleteOption.classList.add("context-menu-item");
         deleteOption.textContent = "Delete Task";
         deleteOption.onclick = () => {
-            // Your delete logic here
-            this._element.remove();
+            const project = this._task.parentProject;
+            if (project) {
+                project.removeTask(this._task);
+            }
+            // this._element.remove();
+            project.notifyViews();
         };
         this._element.appendChild(deleteOption);
 

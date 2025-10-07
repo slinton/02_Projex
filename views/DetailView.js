@@ -9,15 +9,13 @@ import { ProjectDetailsView } from "./ProjectDetailsView.js";
 
 
 export class DetailView extends View {
-    constructor(projexModel) {
+    constructor(projexModel, parentElement, classList = "detail-view") {
         super();
         this._projexModel = projexModel;
 
         this._element = document.createElement("div");
         this._element.classList.add("detail-view");
-
-        this.addChildView(new TaskDetailsView(this._projexModel));
-        this.addChildView(new ProjectDetailsView(this._projexModel));
+        parentElement.appendChild(this._element);
     }
 
     render() {
@@ -31,23 +29,14 @@ export class DetailView extends View {
             const itemLabel = document.createElement("h2");
             itemLabel.textContent = "No item selected";
             this._element.appendChild(itemLabel);
-            return this._element;
+            return;
         }
 
-        this.renderChildViews();
-
-        // if (selectedItem instanceof Task) {
-        //     this._taskDetailsView.render();
-        // } else if (selectedItem instanceof Project) {
-        //     this._projectDetailsView.render();
-        // }
-
-        // // TODO: create this in the constructor and just update it here
-        // if (selectedItem instanceof Task) {
-        //     new TaskDetailsView(this._projexModel, selectedItem, this);
-        // } else if (selectedItem instanceof Project) {
-        //     new ProjectDetailsView(this._projexModel, selectedItem, this);
-        // }
+        if (selectedItem instanceof Task) {
+            (new TaskDetailsView(this._projexModel, this._element)).render();
+        } else if (selectedItem instanceof Project) {
+            (new ProjectDetailsView(this._projexModel, this._element)).render();
+        }
 
     }
 }

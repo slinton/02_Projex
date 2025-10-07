@@ -135,4 +135,45 @@ export class Project extends ProjectItem {
         return 100 * completed / total;
     }
 
+    toJSON() {
+        return {
+            name: this.name,
+            status: this._status,
+            notes: this._notes,
+            tasks: this._tasks.map(task => task.toJSON()),
+            subprojects: this._subprojects.map(project => project.toJSON())
+        };
+    }
+
+    fromJSON(data) {
+        this.name = data.name;
+        this._status = data.status;
+        this._notes = data.notes || "";
+        
+        // Clear existing items
+        this._tasks = [];
+        this._subprojects = [];
+        
+        // Recreate tasks
+        if (data.tasks) {
+            data.tasks.forEach(taskData => {
+                const task = new Task();
+                task.fromJSON(taskData);
+                this.addTask(task);
+            });
+        }
+        
+        // Recreate subprojects
+        if (data.subprojects) {
+            data.subprojects.forEach(projectData => {
+                const project = new Project();
+                project.fromJSON(projectData);
+                this.addSubproject(project);
+            });
+        }
+        
+        // Reset selected item
+        this._selectedItem = this._tasks[0] || this._subprojects[0] || null;
+    }
+
 }

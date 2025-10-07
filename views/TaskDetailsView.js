@@ -6,11 +6,12 @@ import { View } from "./View.js";
 import { Task, TaskStatus } from "../models/Task.js";
 
 export class TaskDetailsView extends View {
-    constructor(projexModel) {
+    constructor(projexModel, parentElement) {
         super();
         this._projexModel = projexModel;
         this._element = document.createElement("div");
         this._element.classList.add("task-details-view");
+        parentElement.appendChild(this._element);
     }
 
     render() {

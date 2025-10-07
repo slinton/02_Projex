@@ -14,8 +14,7 @@ export class ContentView extends View {
         this._element.classList.add(classList);
         parentElement.appendChild(this._element);
 
-        // this.addChildView(new SummaryView(this._projexModel));
-        // this.addChildView(new DetailView(this._projexModel));
+
     }
 
     render() {

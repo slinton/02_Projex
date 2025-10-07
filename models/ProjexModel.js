@@ -215,4 +215,86 @@ export class ProjexModel extends Model {
         }
     }
 
+    saveToLocalStorage() {
+        try {
+            console.log('Saving project data to localStorage...');
+            const data = JSON.stringify(this._rootProject.toJSON());
+            localStorage.setItem('projexData', data);
+            console.log('Data successfully saved to localStorage');
+            return true;
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+            return false;
+        }
+    }
+
+    loadFromLocalStorage() {
+        try {
+            const data = localStorage.getItem('projexData');
+            if (data) {
+                console.log('Loading project data from localStorage...');
+                const parsedData = JSON.parse(data);
+                this._rootProject = new Project();
+                this._rootProject.fromJSON(parsedData);
+                this.currentProject = this._rootProject;
+                console.log('Data successfully loaded from localStorage');
+                return true;
+            } else {
+                console.log('No data found in localStorage');
+                return false;
+            }
+        } catch (error) {
+            console.error('Error loading from localStorage:', error);
+            return false;
+        }
+    }
+
+    saveToFile() {
+        try {
+            const data = JSON.stringify(this._rootProject.toJSON(), null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'projex-data.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            console.log('Data exported to file');
+            return true;
+        } catch (error) {
+            console.error('Error saving to file:', error);
+            return false;
+        }
+    }
+
+    loadFromFile(file) {
+        return new Promise((resolve, reject) => {
+            if (!file) {
+                reject(new Error('No file provided'));
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    this._rootProject = new Project();
+                    this._rootProject.fromJSON(data);
+                    this.currentProject = this._rootProject;
+                    console.log('Data successfully loaded from file');
+                    resolve(true);
+                } catch (error) {
+                    console.error('Error parsing file:', error);
+                    reject(error);
+                }
+            };
+            reader.onerror = () => reject(new Error('Error reading file'));
+            reader.readAsText(file);
+        });
+    }
+
 }

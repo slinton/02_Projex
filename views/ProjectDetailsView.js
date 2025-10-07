@@ -6,11 +6,12 @@ import { ModifyItemAction } from "../actions/ModifyItemAction.js";
 import { Project, ProjectStatus } from "../models/Project.js";
 
 export class ProjectDetailsView extends View {
-    constructor(projexModel) {
+    constructor(projexModel, parentElement) {
         super();
         this._projexModel = projexModel;
         this._element = document.createElement("div");
         this._element.classList.add("project-details-view");
+        parentElement.appendChild(this._element);
     }
 
     render() {
