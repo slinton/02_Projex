@@ -24,6 +24,7 @@ export class ProjectDetailsView extends View {
             return;
         }
         this._element.style.display = "block";
+        this._element.style.backgroundColor = project.color || "#3498db";
 
         // Title
         const name = document.createElement("input");
@@ -33,6 +34,31 @@ export class ProjectDetailsView extends View {
         name.onchange = () => {
             const action = new ModifyItemAction(project, () => {
                 project.name = name.value;
+            });
+            this._projexModel.doAction(action);
+            this._projexModel.notifyViews();
+        };
+
+        // Color Picker
+        const colorContainer = document.createElement("div");
+        colorContainer.classList.add("color-picker-container");
+        
+        const colorLabel = document.createElement("label");
+        colorLabel.textContent = "Project Color: ";
+        colorLabel.classList.add("color-label");
+        
+        const colorPicker = document.createElement("input");
+        colorPicker.type = "color";
+        colorPicker.value = project.color || "#3498db";
+        colorPicker.classList.add("project-color-picker");
+        
+        colorContainer.appendChild(colorLabel);
+        colorContainer.appendChild(colorPicker);
+        this._element.appendChild(colorContainer);
+        
+        colorPicker.onchange = () => {
+            const action = new ModifyItemAction(project, () => {
+                project.color = colorPicker.value;
             });
             this._projexModel.doAction(action);
             this._projexModel.notifyViews();
@@ -50,8 +76,8 @@ export class ProjectDetailsView extends View {
         statusSelect.value = project.status;
         this._element.appendChild(statusSelect);
         statusSelect.onchange = () => {
-            const action = new ModifyItemAction(this._project, () => {
-                this._project.status = statusSelect.value;
+            const action = new ModifyItemAction(project, () => {
+                project.status = statusSelect.value;
             });
             this._projexModel.doAction(action);
             this._projexModel.notifyViews();
@@ -66,9 +92,8 @@ export class ProjectDetailsView extends View {
             const action = new ModifyItemAction(project, () => {
                 project.notes = notesArea.value;
             });
-            projexModel.doAction(action);
-            projexModel.notifyViews();
+            this._projexModel.doAction(action);
+            this._projexModel.notifyViews();
         };
-
     }
 }

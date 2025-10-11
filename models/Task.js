@@ -1,9 +1,9 @@
 import { ProjectItem } from "./ProjectItem.js"; 
 
 export const TaskStatus = {
-    NOT_STARTED: "not started",
-    IN_PROGRESS: "in progress",
-    COMPLETED: "completed"
+    NOT_STARTED: "Not Started",
+    IN_PROGRESS: "In Progress",
+    COMPLETED: "Completed"
 };
 
 export class Task extends ProjectItem {

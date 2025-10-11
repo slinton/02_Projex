@@ -1,9 +1,12 @@
 # TODO
 
 
-Brutally rebuild everything every time!
+
+Combine breadcrubms and apptoolbar into actionbar
+
 
 Fix remove item context menu
+Add New project, new task context menu
 
 
 Add details pane to current Project in header view
@@ -14,15 +17,13 @@ It should be added as a child by its parent
 2. Get rid of the clunky double click sensor
 
 
-# TODO
-1. Add to Github
-
 Move logic for taskSummaryViews and projectSummaryView to their classes from 
 
 
 ProjectPageView
    HeaderView
       BreadCrumbs
+      AppToolbar
    ContentView
       SummaryView
          SummaryContents

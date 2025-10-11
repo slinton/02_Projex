@@ -40,8 +40,8 @@ export class ProjexModel extends Model {
     init() {
         // Top-level project
         this._rootProject = new Project("All Projects");
-        this._rootProject.addTask(new Task("Review all projects", TaskStatus.NOT_STARTED));
-        this._rootProject.addTask(new Task("Prepare summary report", TaskStatus.IN_PROGRESS));
+        // this._rootProject.addTask(new Task("Review all projects", TaskStatus.NOT_STARTED));
+        // this._rootProject.addTask(new Task("Prepare summary report", TaskStatus.IN_PROGRESS));
 
         // Subproject 1
         const personal = new Project("Personal");
@@ -52,8 +52,8 @@ export class ProjexModel extends Model {
             new Task("Plan weekend trip", TaskStatus.COMPLETED)
         ]);
 
-        personal.addSubproject(new Project("Health"));
-        personal.addSubproject(new Project("Hobbies"));
+        this._rootProject.addSubproject(new Project("School"));
+        this._rootProject.addSubproject(new Project("ORBIT"));
 
         // const alpha = new Project("Project Alpha");
         // this._rootProject.addSubproject(alpha);
@@ -97,16 +97,16 @@ export class ProjexModel extends Model {
         // alpha.addSubproject(alphaWeb);
 
         // Subproject 2
-        const beta = new Project("Project Beta");
-        this._rootProject.addSubproject(beta);
-        beta.addTask(new Task("Research market", TaskStatus.COMPLETED));
-        beta.addTask(new Task("Create prototype", TaskStatus.IN_PROGRESS));
+        // const beta = new Project("Project Beta");
+        // this._rootProject.addSubproject(beta);
+        // beta.addTask(new Task("Research market", TaskStatus.COMPLETED));
+        // beta.addTask(new Task("Create prototype", TaskStatus.IN_PROGRESS));
 
-        // Sub-subproject for Beta
-        const betaAnalysis = new Project("Beta - Analysis");
-        betaAnalysis.addTask(new Task("Collect feedback", TaskStatus.NOT_STARTED));
-        betaAnalysis.addTask(new Task("Analyze data", TaskStatus.NOT_STARTED));
-        beta.addSubproject(betaAnalysis);
+        // // Sub-subproject for Beta
+        // const betaAnalysis = new Project("Beta - Analysis");
+        // betaAnalysis.addTask(new Task("Collect feedback", TaskStatus.NOT_STARTED));
+        // betaAnalysis.addTask(new Task("Analyze data", TaskStatus.NOT_STARTED));
+        // beta.addSubproject(betaAnalysis);
 
         // Make the root project the current project
         this.currentProject = this._rootProject;

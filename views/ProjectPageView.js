@@ -20,6 +20,8 @@ export class ProjectPageView extends View {
         this._element = document.createElement("div");
         this._element.id = "project-view"; // Give the element an id
         this._element.classList.add("project-view");
+
+        // Keyboard navigation
         this._element.addEventListener("keydown", (event) => {
             console.log('Keydown event:', event.key);
             if (event.key === "ArrowUp") {
@@ -53,6 +55,7 @@ export class ProjectPageView extends View {
 
     render() {
         this._element.innerHTML = "";
+        this._element.style.backgroundColor = this._projexModel.currentProject ? this._projexModel.currentProject.color : '#000';
 
         const project = this._projexModel.currentProject;
         console.log(`Rendering ProjectPageView ${project ? project.name : 'No Project'}`);
@@ -65,8 +68,5 @@ export class ProjectPageView extends View {
         (new ContentView(this._projexModel, this._element)).render();
         (new FooterView(this._projexModel, this._element)).render();
 
-        // Debugging: print view and element tree
-        // this.print_view_tree();
-        // this.print_element_tree(this._element, 0);
     }
 }

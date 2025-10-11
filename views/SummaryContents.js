@@ -28,9 +28,8 @@ export class SummaryContents extends View {
             return;
         }
 
-        const toolbar = new Toolbar(this._projexModel);
-        this._element.appendChild(toolbar.element);
-        toolbar.render();
+        // Toolbar
+        (new Toolbar(this._projexModel, this._element)).render();
 
 
         // Add tasks

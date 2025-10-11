@@ -2,14 +2,18 @@ import { Task, TaskStatus } from "./Task.js";
 import { ProjectItem } from "./ProjectItem.js"; // Import the base class
 
 export const ProjectStatus = {
-    NOT_STARTED: "not started",
-    IN_PROGRESS: "in progress",
-    COMPLETED: "completed"
+    NOT_STARTED: "Not Started",
+    IN_PROGRESS: "In Progress",
+    COMPLETED: "Completed",
+    PAUSED: "Paused",
+    FUTURE: "Future"
+
 };
 
 export class Project extends ProjectItem {
-    constructor(name, status = ProjectStatus.NOT_STARTED, notes = "") {
-        super(name, notes); // Call base constructor
+    constructor(name, status = ProjectStatus.NOT_STARTED, notes = "", color = "#3498db") {
+        super(name, notes);
+        this.color = color; 
         this._tasks = [];
         this._subprojects = [];
         this._status = status;
@@ -55,6 +59,14 @@ export class Project extends ProjectItem {
 
     set notes(notes) {
         this._notes = notes;
+    }
+
+    get color() {
+        return this._color;
+    } 
+
+    set color(newColor) {
+        this._color = newColor;
     }
 
     addTask(task) {
@@ -140,15 +152,17 @@ export class Project extends ProjectItem {
             name: this.name,
             status: this._status,
             notes: this._notes,
+            color: this.color,  // Add this line
             tasks: this._tasks.map(task => task.toJSON()),
             subprojects: this._subprojects.map(project => project.toJSON())
         };
     }
 
     fromJSON(data) {
-        this.name = data.name;
-        this._status = data.status;
+        this.name = data.name || "";
+        this._status = data.status || ProjectStatus.NOT_STARTED;
         this._notes = data.notes || "";
+        this.color = data.color || "#3498db";  // Add this line
         
         // Clear existing items
         this._tasks = [];

@@ -18,6 +18,7 @@ export class ProjectSummaryView extends View {
 
     render() {
         this._element.innerHTML = "";
+        this._element.style.backgroundColor = this._project.color;
         
         const projectName = document.createElement("h3");
         projectName.textContent = this._project.name;

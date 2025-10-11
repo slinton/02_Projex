@@ -24,6 +24,7 @@ export class TaskDetailsView extends View {
             return;
         }
         this._element.style.display = "block";
+        this._element.style.backgroundColor = this._projexModel.currentProject ? this._projexModel.currentProject.color : "#3498db";
 
         // Title
         const name = document.createElement("input");

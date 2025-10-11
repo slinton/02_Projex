@@ -3,14 +3,14 @@
     height: 83%;
     display: flex;
     flex-direction: row;
-    background-color: wheat;
+    /* background-color: wheat; */
     width: 100%;
 }
 
 
 /* Inside the content-view */
 .summary-view {
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
     border-right: 2px solid var(--border-color);
     min-width: 30%;
     height: 100%;
@@ -18,7 +18,7 @@
 }
 
 .summary-contents {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
