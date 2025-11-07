@@ -61,7 +61,7 @@ export class SummaryContents extends View {
             }
         }
 
-        //Add subprojects
+        // Add subprojects
         console.log(`Project ${project.name} has ${project.subprojects.length} subprojects.`);
         if (project.subprojects.length > 0) {
             const subprojectsLabel = document.createElement("h2");

@@ -25,8 +25,6 @@ export class Breadcrumbs extends View {
         }
 
         let project = this._projexModel.currentProject;
-        this._element.classList.add("breadcrumb");
-
         while (project !== null) {
             const projectLink = document.createElement("a");
             projectLink.href = "#";

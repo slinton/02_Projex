@@ -8,7 +8,7 @@ export const TaskStatus = {
 
 export class Task extends ProjectItem {
     constructor(name, status = TaskStatus.NOT_STARTED) {
-        super(name); // Call base constructor
+        super(name); 
         this._status = status;
     }
 

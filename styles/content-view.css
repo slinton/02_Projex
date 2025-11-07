@@ -1,6 +1,7 @@
 
 .content-view {
-    height: 83%;
+    /* height: 83%; */
+    height: 100%;
     display: flex;
     flex-direction: row;
     /* background-color: wheat; */

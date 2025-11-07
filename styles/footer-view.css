@@ -1,6 +1,4 @@
 .footer-view {
-    height: 5%;
-    flex: 0 0 5rem;
     background-color: var(--background-color);
     padding: 1rem;
 

@@ -23,6 +23,7 @@ Move logic for taskSummaryViews and projectSummaryView to their classes from
 ProjectPageView
    HeaderView
       BreadCrumbs
+      Title 
       AppToolbar
    ContentView
       SummaryView

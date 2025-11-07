@@ -44,17 +44,44 @@ export class ProjexModel extends Model {
         // this._rootProject.addTask(new Task("Prepare summary report", TaskStatus.IN_PROGRESS));
 
         // Subproject 1
-        const personal = new Project("Personal");
-        this._rootProject.addSubproject(personal);
-        personal.addTasks([
+        const personalProject = new Project("Personal");
+        this._rootProject.addSubproject(personalProject);
+        personalProject.addTasks([
             new Task("Buy groceries", TaskStatus.NOT_STARTED),
             new Task("Call plumber", TaskStatus.IN_PROGRESS),
             new Task("Plan weekend trip", TaskStatus.COMPLETED)
         ]);
 
-        this._rootProject.addSubproject(new Project("School"));
-        this._rootProject.addSubproject(new Project("ORBIT"));
+        const retirementProject = new Project("Retirement");
+        personalProject.addSubproject(retirementProject);
+        retirementProject.addTasks([
+            new Task("Research investment options", TaskStatus.NOT_STARTED),
+            new Task("Meet with financial advisor", TaskStatus.IN_PROGRESS),
+            new Task("Plan travel destinations", TaskStatus.COMPLETED)
+        ]);
+        
 
+        // this._rootProject.addSubproject(new Project("School"));
+        // this._rootProject.addSubproject(new Project("ORBIT"));
+        
+        // Subproject 2
+        const work = new Project("Work");
+        this._rootProject.addSubproject(work);
+        work.addTasks([
+            new Task("Grade Robotics", TaskStatus.NOT_STARTED),
+            new Task("Complete Brian Survey", TaskStatus.IN_PROGRESS),
+        ]);
+
+         // Subproject 3
+        const orbit = new Project("ORBIT");
+        this._rootProject.addSubproject(orbit);
+        orbit.addTasks([
+            new Task("List Components", TaskStatus.NOT_STARTED),
+            new Task("Create To do list", TaskStatus.IN_PROGRESS),
+        ]);
+
+        // this._rootProject.addSubproject(new Project("School"));
+        // this._rootProject.addSubproject(new Project("ORBIT"));
         // const alpha = new Project("Project Alpha");
         // this._rootProject.addSubproject(alpha);
         // alpha.addTasks([

@@ -23,10 +23,8 @@ export class HeaderView extends View {
             return;
         }
 
-          // Breadcrumbs
+        // Breadcrumbs
         (new Breadcrumbs(this._projexModel, this._element)).render();
-            // Toolbar
-        (new AppToolbar(this._projexModel, this._element)).render();
 
         // Title
         this._title = document.createElement("div");
@@ -35,6 +33,8 @@ export class HeaderView extends View {
         this._title.textContent = project.name;
         this._element.appendChild(this._title);
 
+        // Toolbar
+        (new AppToolbar(this._projexModel, this._element)).render();
       
     }
 }
